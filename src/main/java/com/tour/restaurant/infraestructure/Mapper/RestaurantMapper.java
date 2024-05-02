@@ -8,11 +8,12 @@ import org.mapstruct.Mapper;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
-
-@Mapper(componentModel = "spring", uses = {RestaurantMapper.class})
+@Component
+@Mapper(componentModel = "spring", uses = {BookingMapper.class, TableFoodMapper.class})
 public interface RestaurantMapper {
     @Mappings({
             @Mapping(source = "restaurant_id", target = "restaurantId"),

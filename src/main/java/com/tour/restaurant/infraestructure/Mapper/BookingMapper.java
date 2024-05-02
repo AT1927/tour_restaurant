@@ -2,6 +2,7 @@ package com.tour.restaurant.infraestructure.Mapper;
 
 import com.tour.restaurant.Domain.DTO.BookingDTO;
 import com.tour.restaurant.infraestructure.Entities.Booking;
+import com.tour.restaurant.infraestructure.Entities.TableFood;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -11,10 +12,9 @@ import org.springframework.stereotype.Component; // Importa esta clase
 import java.util.List;
 import java.util.Optional;
 
-@Mapper
 @Component // Añade esta anotación
+@Mapper(componentModel = "spring", uses = {RestaurantMapper.class, TableFoodMapper.class})
 public interface BookingMapper {
-    BookingMapper INSTANCE = Mappers.getMapper(BookingMapper.class);
     @Mappings({
             @Mapping(source = "restaurant_id", target = "restaurantId"),
             @Mapping(source = "number_customer", target = "numberCustomer"),
