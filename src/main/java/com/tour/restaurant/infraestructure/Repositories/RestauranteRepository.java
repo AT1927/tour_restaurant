@@ -26,6 +26,7 @@ public abstract class RestauranteRepository implements RestaurantRepositoryDomai
         Optional<Restaurant> restaurant = restauranteRepo.findById(idRestaurant);
         return mapper.toRestaurantsOptional(restaurant);
     }
+
     @Override
     public RestaurantDTO save(RestaurantDTO restaurantDTO){
         Restaurant restaurante = mapper.toRestaurant(restaurantDTO);

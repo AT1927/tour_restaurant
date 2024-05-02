@@ -17,4 +17,5 @@ public interface TableFoodCrudRepository extends CrudRepository<TableFood, Long>
     public List<TableFood> findByIsAvailableFalse(Long idRestaurant);
 
 
+
 }

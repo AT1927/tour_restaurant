@@ -20,8 +20,6 @@ public  class BookingRepository implements BookingRepositoryDomain {
     private BookingMapper bookingMapper;
 
 
-
-
     @Override
     public List<BookingDTO> getAll() {
         List<Booking> bookings = (List<Booking>) bookingCrudRepository.findAll();
@@ -29,12 +27,12 @@ public  class BookingRepository implements BookingRepositoryDomain {
 
     }
 
-
     @Override
     public Optional<BookingDTO> getById(long id) {
         Optional<Booking> booking = bookingCrudRepository.findById(id);
         return bookingMapper.toBookingsOptional(booking);
     }
+
 
     @Override
     public BookingDTO save(BookingDTO BookingDto) {

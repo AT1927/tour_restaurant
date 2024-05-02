@@ -54,6 +54,7 @@ public class TableFoodRepository implements TableFoodRepositoryDomain{
 
     }
 
+
     @Override
     public void deleteById(Long id) {
         tableRepo.deleteById(id);

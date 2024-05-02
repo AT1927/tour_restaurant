@@ -17,6 +17,7 @@ public interface TableFoodMapper {
 
     TableFoodMapper INSTANCE = Mappers.getMapper(TableFoodMapper.class);
 
+
     @Mapping(target = "isAvailable", source = "available")
     TableFoodDTO toTableFoodDTO(TableFood tableFood);
 

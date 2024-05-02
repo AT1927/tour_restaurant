@@ -15,7 +15,9 @@ public interface TableFoodRepositoryDomain  {
     Optional<TableFood> findByNumberTable(int number);
 
 
+
     List<TableFood> findByIsAvailableTrue(Long idRestaurant);
+
 
 
     List<TableFood> findByIsAvailableFalse(Long idRestaurant);
