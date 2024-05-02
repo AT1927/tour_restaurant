@@ -12,22 +12,12 @@ public interface TableFoodRepositoryDomain  {
 
 
 
-    Optional<TableFood> findByNumberTable(int number);
-
-
-
-    List<TableFood> findByIsAvailableTrue(Long idRestaurant);
-
-
-
-    List<TableFood> findByIsAvailableFalse(Long idRestaurant);
-
+    Optional<TableFoodDTO> findByNumberTable(Long numberTable);
+    List<TableFoodDTO> findByIsAvailableTrue();
+    List<TableFoodDTO> findByIsAvailableFalse();
     List<TableFoodDTO> findAll();
-
     Optional<TableFoodDTO> findById(Long id);
-
     TableFoodDTO save(TableFoodDTO table);
-
     void deleteById(Long id);
 }
 

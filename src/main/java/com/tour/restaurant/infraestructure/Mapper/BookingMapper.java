@@ -4,6 +4,7 @@ import com.tour.restaurant.Domain.DTO.BookingDTO;
 import com.tour.restaurant.infraestructure.Entities.Booking;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Component; // Importa esta clase
 
@@ -14,10 +15,12 @@ import java.util.Optional;
 @Component // Añade esta anotación
 public interface BookingMapper {
     BookingMapper INSTANCE = Mappers.getMapper(BookingMapper.class);
-
-    @Mapping(source = "restaurant.id", target = "restaurantId")
-    @Mapping(target = "createdAt", ignore = true)
-    @Mapping(target = "updatedAt", ignore = true)
+    @Mappings({
+            @Mapping(source = "restaurant_id", target = "restaurantId"),
+            @Mapping(source = "number_customer", target = "numberCustomer"),
+            @Mapping(target = "createdAt", ignore = true),
+            @Mapping(target = "updatedAt", ignore = true)
+    })
 
 
     Booking toBooking(BookingDTO bookingDTO);

@@ -1,7 +1,7 @@
 package com.tour.restaurant.infraestructure.Repositories.Crud;
 
+import com.tour.restaurant.Domain.DTO.TableFoodDTO;
 import com.tour.restaurant.infraestructure.Entities.TableFood;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,9 +12,9 @@ import java.util.Optional;
 public interface TableFoodCrudRepository extends CrudRepository<TableFood, Long> {
 
 
-    Optional<TableFood> findByNumberTable(int number);
-    List<TableFood> findByIsAvailableTrue(Long idRestaurant);
-    public List<TableFood> findByIsAvailableFalse(Long idRestaurant);
+    Optional<TableFoodDTO> findByNumberTable(Long numberTable);
+    List<TableFood> findByIsAvailableTrue();
+    public List<TableFoodDTO> findByIsAvailableFalse();
 
 
 

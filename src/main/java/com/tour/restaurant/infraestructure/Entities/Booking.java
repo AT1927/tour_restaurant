@@ -1,12 +1,9 @@
 package com.tour.restaurant.infraestructure.Entities;
-import com.tour.restaurant.Domain.DTO.BookingDTO;
 import jakarta.persistence.*;
-import com.tour.restaurant.infraestructure.Entities.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.util.Date;
-import java.util.Optional;
 
 @Entity
 @Table(name = "booking")
@@ -17,7 +14,7 @@ public class Booking {
     private Long id;
 
     @Column(nullable = false)
-    private Integer capacity;
+    private Integer numberCustomer;
 
     @Column(nullable = false)
     private Date date;
@@ -59,12 +56,12 @@ public class Booking {
         this.id = id;
     }
 
-    public Integer getCapacity() {
-        return capacity;
+    public Integer getNumberCustomer() {
+        return numberCustomer;
     }
 
-    public void setCapacity(Integer capacity) {
-        this.capacity = capacity;
+    public void setNumberCustomer(Integer capacity) {
+        this.numberCustomer = capacity;
     }
 
     public Date getDate() {
