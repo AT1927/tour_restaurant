@@ -21,6 +21,10 @@ public class TableFoodRepository implements TableFoodRepositoryDomain{
 
     @Override
     public Optional<TableFoodDTO> findByNumberTable(Long numberTable) {
+        Optional<TableFood> table = tableRepo.findByNumberTable(numberTable);
+        if (table.isPresent()){
+            return tableMapper.toTablesFoodOptional(table);
+        }
         return Optional.empty();
     }
 
@@ -33,8 +37,9 @@ public class TableFoodRepository implements TableFoodRepositoryDomain{
 
     @Override
     public List<TableFoodDTO> findByIsAvailableFalse() {
-
-        return null;
+        List<TableFoodDTO> tablesUnAvailable;
+        tablesUnAvailable = tableMapper.toTablesFoodDTO(tableRepo.findByIsAvailableFalse());
+        return tablesUnAvailable;
     }
     @Override
     public TableFoodDTO save(TableFoodDTO table) {

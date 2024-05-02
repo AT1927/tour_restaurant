@@ -1,7 +1,5 @@
 package com.tour.restaurant.infraestructure.Mapper;
 
-import com.tour.restaurant.Domain.DTO.BookingDTO;
-import com.tour.restaurant.infraestructure.Entities.Booking;
 import com.tour.restaurant.infraestructure.Entities.TableFood;
 import com.tour.restaurant.Domain.DTO.TableFoodDTO;
 import org.mapstruct.Mapper;
