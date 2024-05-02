@@ -13,7 +13,6 @@ public interface TableFoodCrudRepository extends CrudRepository<TableFood, Long>
 
 
     Optional<TableFood> findByNumberTable(int number);
-
     List<TableFood> findByIsAvailableTrue(Long idRestaurant);
     public List<TableFood> findByIsAvailableFalse(Long idRestaurant);
 
