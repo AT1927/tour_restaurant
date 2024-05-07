@@ -9,10 +9,10 @@ import java.util.Optional;
 public interface RestaurantRepositoryDomain {
     
     List<RestaurantDTO> getAll();
+
     List<Restaurant> getByRestaurant(Restaurant restaurant);
-    Optional<Restaurant> getById(long id);
+    /*Optional<Restaurant> getById(long id);*/
     Optional<RestaurantDTO> getById(long id);
-    Restaurant save(Restaurant restaurant);
     RestaurantDTO save(RestaurantDTO restaurantDTO);
     void deleteByID(long id);
 
