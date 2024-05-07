@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Scanner;
+import java.util.stream.Collectors;
 
 @Service
 public class RestaurantService {
@@ -61,7 +63,7 @@ public class RestaurantService {
         Restaurant restaurantEntity = convertToEntity(restaurantDto);
 
 
-        Restaurant savedRestaurant = restaurantRepositoryDomain.save(restaurantEntity);
+        Restaurant savedRestaurant = restaurantRepository.save(restaurantEntity);
 
 
         return convertToDto(savedRestaurant);
@@ -87,5 +89,8 @@ public class RestaurantService {
     }
 
     public List<RestaurantDTO> getAllRestaurants() {
-    }
+
+        List<RestaurantDTO> restaurants = restaurantRepository.getAll();
+        return restaurants.stream().map(this::convertToDto).collect(Collectors.toList());
+    };
 }

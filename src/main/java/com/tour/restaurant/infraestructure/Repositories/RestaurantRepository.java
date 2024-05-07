@@ -22,7 +22,7 @@ public abstract class RestaurantRepository implements RestaurantRepositoryDomain
         return mapper.toRestaurants(restaurants);
     }
    @Override
-    public Optional<Restaurant> getById(long idRestaurant){
+    public Optional<RestaurantDTO> getById(long idRestaurant){
         Optional<Restaurant> restaurant = restaurantRepo.findById(idRestaurant);
         return mapper.toRestaurantsOptional(restaurant);
     }
