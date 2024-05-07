@@ -6,6 +6,7 @@ import com.tour.restaurant.Domain.Repository.TableFoodRepositoryDomain;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,7 +14,47 @@ import java.util.Optional;
 public class TableFoodService {
 
     @Autowired
-    private TableFoodRepositoryDomain tableFoodRepositoryDomain;
+    private TableFoodRepositoryDomain repo ;
+
+    @Autowired
+    public TableFoodService(TableFoodRepositoryDomain repo) {
+        this.repo = repo;
+    }
+
+    public Optional<TableFoodDTO> findByNumberTable(Long numberTable){
+        return repo.findByNumberTable(numberTable);
+    }
+
+    public List<TableFoodDTO> findByIsAvailableTrue(){
+        return repo.findByIsAvailableTrue();
+    }
+
+    public List<TableFoodDTO> findByIsAvailableFalse(){
+        return repo.findByIsAvailableFalse();
+    }
+
+    public List<TableFoodDTO> getAllTables(){
+        List<TableFoodDTO> tables = repo.findAll();
+        return new ArrayList<>(tables);
+    }
+
+    public Optional<TableFoodDTO> getTablebyId(Long id){
+        return repo.findById(id);
+    }
+
+    public TableFoodDTO save(TableFoodDTO table){
+        return repo.save(table);
+    }
+
+    public boolean deleteById(Long id){
+        if (getTablebyId(id).isPresent()) {
+            repo.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
+
 
 
 
