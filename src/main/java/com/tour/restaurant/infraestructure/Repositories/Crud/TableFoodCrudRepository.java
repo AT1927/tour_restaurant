@@ -10,11 +10,7 @@ import java.util.Optional;
 @Repository
 public interface TableFoodCrudRepository extends CrudRepository<TableFood, Long> {
 
-
-    Optional<TableFood> findByNumberTable(Long numberTable);
-    List<TableFood> findByIsAvailableTrue();
-    public List<TableFood> findByIsAvailableFalse();
-
-
-
+    Optional<TableFood> findByNumber(Integer number);
+    List<TableFood> findByAvailableTrue();
+    List<TableFood> findByAvailableFalse();
 }

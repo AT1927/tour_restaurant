@@ -21,7 +21,7 @@ public class TableFoodService {
         this.repo = repo;
     }
 
-    public Optional<TableFoodDTO> findByNumberTable(Long numberTable){
+    public Optional<TableFoodDTO> findByNumberTable(Integer numberTable){
         return repo.findByNumberTable(numberTable);
     }
 

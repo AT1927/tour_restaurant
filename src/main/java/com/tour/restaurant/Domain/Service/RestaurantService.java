@@ -6,6 +6,7 @@ import com.tour.restaurant.Domain.Repository.RestaurantRepositoryDomain;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -23,12 +24,12 @@ public class RestaurantService {
     public List<RestaurantDTO> getAll(){
         return restaurantRepository.getAll();
     }
-    /*
+
     public List<RestaurantDTO> getAllRestaurants() {
         List<RestaurantDTO> restaurants = restaurantRepository.getAll();
         return new ArrayList<>(restaurants);
     }
-    */
+
     public Optional<RestaurantDTO> getById(long restaurantID){
         return restaurantRepository.getById(restaurantID);
     }

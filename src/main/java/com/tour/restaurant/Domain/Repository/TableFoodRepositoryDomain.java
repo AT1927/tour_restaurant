@@ -12,7 +12,7 @@ public interface TableFoodRepositoryDomain  {
 
 
 
-    Optional<TableFoodDTO> findByNumberTable(Long numberTable);
+    Optional<TableFoodDTO> findByNumberTable(Integer numberTable);
     List<TableFoodDTO> findByIsAvailableTrue();
     List<TableFoodDTO> findByIsAvailableFalse();
     List<TableFoodDTO> findAll();

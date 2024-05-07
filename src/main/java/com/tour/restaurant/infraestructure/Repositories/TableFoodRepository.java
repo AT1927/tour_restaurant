@@ -20,25 +20,24 @@ public class TableFoodRepository implements TableFoodRepositoryDomain{
 
 
     @Override
-    public Optional<TableFoodDTO> findByNumberTable(Long numberTable) {
-        Optional<TableFood> table = tableRepo.findByNumberTable(numberTable);
+    public Optional<TableFoodDTO> findByNumberTable(Integer numberTable) {
+        Optional<TableFood> table = tableRepo.findByNumber(numberTable);
         if (table.isPresent()){
             return tableMapper.toTablesFoodOptional(table);
         }
         return Optional.empty();
     }
-
     @Override
     public List<TableFoodDTO> findByIsAvailableTrue() {
         List<TableFoodDTO> tablesAvailable;
-        tablesAvailable = tableMapper.toTablesFoodDTO(tableRepo.findByIsAvailableTrue());
+        tablesAvailable = tableMapper.toTablesFoodDTO(tableRepo.findByAvailableTrue());
         return tablesAvailable;
     }
 
     @Override
     public List<TableFoodDTO> findByIsAvailableFalse() {
         List<TableFoodDTO> tablesUnAvailable;
-        tablesUnAvailable = tableMapper.toTablesFoodDTO(tableRepo.findByIsAvailableFalse());
+        tablesUnAvailable = tableMapper.toTablesFoodDTO(tableRepo.findByAvailableFalse());
         return tablesUnAvailable;
     }
     @Override
