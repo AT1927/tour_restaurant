@@ -5,10 +5,9 @@ import com.tour.restaurant.infraestructure.Entities.Restaurant;
 import com.tour.restaurant.Domain.Repository.RestaurantRepositoryDomain;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,7 +29,7 @@ public class RestaurantService {
         return new ArrayList<>(restaurants);
     }
     */
-    public Optional<Restaurant> getById(long restaurantID){
+    public Optional<RestaurantDTO> getById(long restaurantID){
         return restaurantRepository.getById(restaurantID);
     }
 
@@ -42,21 +41,20 @@ public class RestaurantService {
         return restaurantRepository.getByRestaurant(restaurant);
     }
 
-    public Restaurant save(Restaurant restaurant){
-        return restaurantRepository.save(restaurant);
-    }
-
     public RestaurantDTO save (RestaurantDTO restaurantDTO){
         return restaurantRepository.save(restaurantDTO);
     }
 
     public boolean delete(long id){
         if (getRestaurantById(id).isPresent()){
-            restaurantRepository.delete(id);
+            restaurantRepository.deleteByID(id);
             return true;
         }
         return false;
     }
+
+
+    /*
     //-----------------------------------------------------------
     public RestaurantDTO createRestaurant(RestaurantDTO restaurantDto) {
 
@@ -68,6 +66,8 @@ public class RestaurantService {
 
         return convertToDto(savedRestaurant);
     }
+
+     */
 
 
     private Restaurant convertToEntity(RestaurantDTO restaurantDto) {
@@ -88,9 +88,5 @@ public class RestaurantService {
         return restaurantDto;
     }
 
-    public List<RestaurantDTO> getAllRestaurants() {
 
-        List<RestaurantDTO> restaurants = restaurantRepository.getAll();
-        return restaurants.stream().map(this::convertToDto).collect(Collectors.toList());
-    };
 }
