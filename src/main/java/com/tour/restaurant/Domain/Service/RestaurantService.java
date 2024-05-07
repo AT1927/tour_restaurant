@@ -21,26 +21,17 @@ public class RestaurantService {
         this.restaurantRepository = restaurantRepository;
     }
 
-    public List<RestaurantDTO> getAll(){
-        return restaurantRepository.getAll();
-    }
-
     public List<RestaurantDTO> getAllRestaurants() {
         List<RestaurantDTO> restaurants = restaurantRepository.getAll();
         return new ArrayList<>(restaurants);
     }
 
-    public Optional<RestaurantDTO> getById(long restaurantID){
-        return restaurantRepository.getById(restaurantID);
-    }
 
     public Optional<RestaurantDTO> getRestaurantById(Long id) {
         return restaurantRepository.getById(id);
     }
 
-    public List<Restaurant> getByRestaurant(Restaurant restaurant){
-        return restaurantRepository.getByRestaurant(restaurant);
-    }
+
 
     public RestaurantDTO save (RestaurantDTO restaurantDTO){
         return restaurantRepository.save(restaurantDTO);

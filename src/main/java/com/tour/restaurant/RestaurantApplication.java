@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan("com.tour.restaurant.infraestructure.Mapper") // Agrega esta línea
+@ComponentScan("com.tour.restaurant.infraestructure.Mapper")
 public class RestaurantApplication {
 
     public static void main(String[] args) {

@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/tableS")
+@RequestMapping("/tables")
 public class TableFoodController {
 
     @Autowired
