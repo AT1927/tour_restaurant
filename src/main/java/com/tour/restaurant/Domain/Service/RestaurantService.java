@@ -5,35 +5,57 @@ import com.tour.restaurant.infraestructure.Entities.Restaurant;
 import com.tour.restaurant.Domain.Repository.RestaurantRepositoryDomain;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class RestaurantService {
 
+    private RestaurantRepositoryDomain restaurantRepository;
+
     @Autowired
-    private RestaurantRepositoryDomain restaurantRepositoryDomain;
+    public RestaurantService(RestaurantRepositoryDomain restaurantRepository) {
+        this.restaurantRepository = restaurantRepository;
+    }
 
     public List<RestaurantDTO> getAll(){
-        return restaurantRepositoryDomain.getAll();
+        return restaurantRepository.getAll();
     }
+    /*
+    public List<RestaurantDTO> getAllRestaurants() {
+        List<RestaurantDTO> restaurants = restaurantRepository.getAll();
+        return new ArrayList<>(restaurants);
+    }
+    */
     public Optional<Restaurant> getById(long restaurantID){
-        return restaurantRepositoryDomain.getById(restaurantID);
+        return restaurantRepository.getById(restaurantID);
     }
+
+    public Optional<RestaurantDTO> getRestaurantById(Long id) {
+        return restaurantRepository.getById(id);
+    }
+
     public List<Restaurant> getByRestaurant(Restaurant restaurant){
-        return restaurantRepositoryDomain.getByRestaurant(restaurant);
+        return restaurantRepository.getByRestaurant(restaurant);
     }
+
     public Restaurant save(Restaurant restaurant){
-        return restaurantRepositoryDomain.save(restaurant);
+        return restaurantRepository.save(restaurant);
     }
-    /*public boolean delete(long id){
-        if (getById(id).isPresent()){
+
+    public RestaurantDTO save (RestaurantDTO restaurantDTO){
+        return restaurantRepository.save(restaurantDTO);
+    }
+
+    public boolean delete(long id){
+        if (getRestaurantById(id).isPresent()){
             restaurantRepository.delete(id);
             return true;
         }
         return false;
-    }*/
-    //------------------------------------------------------------------------
+    }
+    //-----------------------------------------------------------
     public RestaurantDTO createRestaurant(RestaurantDTO restaurantDto) {
 
         Restaurant restaurantEntity = convertToEntity(restaurantDto);
