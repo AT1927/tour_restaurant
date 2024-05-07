@@ -24,7 +24,7 @@ CREATE TABLE table_food (
 
 CREATE TABLE booking (
                          id INT AUTO_INCREMENT PRIMARY KEY,
-                         number_customer INT NOT NULL,  -- Consider if needed based on table_food capacity
+                         number_of_people INT NOT NULL,  -- Consider if needed based on table_food capacity
                          date DATE NOT NULL,
                          status BOOLEAN NOT NULL DEFAULT  TRUE,
                          status_payment BOOLEAN NOT NULL DEFAULT  FALSE,

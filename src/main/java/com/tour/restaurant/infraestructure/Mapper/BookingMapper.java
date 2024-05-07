@@ -17,7 +17,7 @@ import java.util.Optional;
 public interface BookingMapper {
     @Mappings({
             @Mapping(source = "restaurant_id", target = "restaurantId"),
-            @Mapping(source = "number_customer", target = "numberCustomer"),
+            @Mapping(source = "number_of_people", target = "numberOfPeople"),
             @Mapping(target = "createdAt", ignore = true),
             @Mapping(target = "updatedAt", ignore = true)
     })

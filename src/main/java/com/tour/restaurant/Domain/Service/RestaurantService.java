@@ -71,23 +71,6 @@ public class RestaurantService {
      */
 
 
-    private Restaurant convertToEntity(RestaurantDTO restaurantDto) {
-        Restaurant restaurantEntity = new Restaurant();
-
-        restaurantEntity.setName(restaurantDto.getName());
-        restaurantEntity.setDescription(restaurantDto.getDescription());
-        restaurantEntity.setAddress(restaurantDto.getAddress());
-        return restaurantEntity;
-    }
-
-
-    private RestaurantDTO convertToDto(Restaurant restaurantEntity) {
-        RestaurantDTO restaurantDto = new RestaurantDTO();
-        restaurantDto.setName(restaurantEntity.getName());
-        restaurantDto.setDescription(restaurantEntity.getDescription());
-        restaurantDto.setAddress(restaurantEntity.getAddress());
-        return restaurantDto;
-    }
 
 
 }
