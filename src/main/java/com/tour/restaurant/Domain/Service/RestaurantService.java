@@ -85,4 +85,7 @@ public class RestaurantService {
         restaurantDto.setAddress(restaurantEntity.getAddress());
         return restaurantDto;
     }
+
+    public List<RestaurantDTO> getAllRestaurants() {
+    }
 }
