@@ -24,9 +24,14 @@ public interface RestaurantMapper {
 
     Restaurant toRestaurant(RestaurantDTO restaurantDTO);
     RestaurantDTO toRestaurantDTO(Restaurant restaurant);
-    List<RestaurantDTO> toRestaurants(List<Restaurant> restaurantes);
+    List<RestaurantDTO> toRestaurants(List<Restaurant> restaurants);
+    
     @InheritInverseConfiguration
-    Restaurant toRestaurante(Restaurant restaurant);
-    List<RestaurantDTO> toRestaurantsDTO(List<RestaurantDTO> restaurantes);
+    Restaurant toRestaurant(Restaurant restaurant);
+    List<RestaurantDTO> toRestaurantsDTO(List<RestaurantDTO> restaurants);
     Optional<Restaurant> toRestaurantsOptional(Optional<Restaurant> restaurant);
+
+    default Optional<RestaurantDTO> toRestaurantsOptional(Optional<Restaurant> restaurant ){
+        return  restaurant.map(this::toRestaurantDTO);
+    }
 }
