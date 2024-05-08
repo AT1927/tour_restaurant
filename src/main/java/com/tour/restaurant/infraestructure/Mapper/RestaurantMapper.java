@@ -12,23 +12,26 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
-@Component
-@Mapper(componentModel = "spring", uses = {BookingMapper.class, TableFoodMapper.class})
+
+@Mapper(componentModel = "spring")
 public interface RestaurantMapper {
     @Mappings({
-            @Mapping(source = "restaurant_id", target = "restaurantId"),
-            @Mapping(target = "createdAt", ignore = true),
-            @Mapping(target = "updatedAt", ignore = true)
+            @Mapping(source = "id", target ="id"),
+            @Mapping(source = "name", target ="name"),
+            @Mapping(source = "description", target ="description"),
+            @Mapping(source = "address", target ="address"),
+            @Mapping(source = "schedule", target ="schedule"),
+            @Mapping(source = "type", target ="type"),
+            @Mapping(target =  "created_at", ignore = true),
+            @Mapping(target = "updated_at", ignore = true),
     })
 
 
     Restaurant toRestaurant(RestaurantDTO restaurantDTO);
-    RestaurantDTO toRestaurantDTO(Restaurant restaurant);
-    List<RestaurantDTO> toRestaurants(List<Restaurant> restaurants);
-    
+
     @InheritInverseConfiguration
-    Restaurant toRestaurant(Restaurant restaurant);
-    List<RestaurantDTO> toRestaurantsDTO(List<RestaurantDTO> restaurants);
+    RestaurantDTO toRestaurantDTO(Restaurant restaurant);
+    List<RestaurantDTO> toRestaurantsDTO(List<Restaurant> restaurants);
 
     default Optional<RestaurantDTO> toRestaurantsOptional(Optional<Restaurant> restaurant ){
         return  restaurant.map(this::toRestaurantDTO);

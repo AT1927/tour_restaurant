@@ -13,12 +13,9 @@ import java.util.Optional;
 @Service
 public class BookingService {
 
-    private final BookingRepositoryDomain bookingRepository;
-
     @Autowired
-    public BookingService(BookingRepositoryDomain bookingRepository) {
-        this.bookingRepository = bookingRepository;
-    }
+    private BookingRepositoryDomain bookingRepository;
+
 
     public List<BookingDTO> getAllBookings() {
         List<BookingDTO> bookings = bookingRepository.getAll();

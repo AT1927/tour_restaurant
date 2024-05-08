@@ -51,7 +51,7 @@ public class TableFoodRepository implements TableFoodRepositoryDomain{
     @Override
     public List<TableFoodDTO> findAll() {
         List<TableFood> tables = (List<TableFood>) tableRepo.findAll();
-        return tableMapper.toTablesFood(tables);
+        return tableMapper.toTablesFoodDTO(tables);
     }
 
     @Override

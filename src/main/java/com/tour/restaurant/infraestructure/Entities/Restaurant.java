@@ -5,7 +5,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "restaurant")
@@ -15,31 +14,28 @@ public class Restaurant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "name", nullable = false, length = 255)
     private String name;
 
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
-    @Column(nullable = false)
+    @Column(name = "address", nullable = false, length = 255)
     private String address;
 
+    @Column(name = "schedule", length = 255)
     private String schedule;
 
+    @Column(name = "type", length = 45)
     private String type;
 
     @CreatedDate
-    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private Date createdAt;
 
     @LastModifiedDate
-    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "updated_at", nullable = false)
     private Date updatedAt;
-
-    // Getters and Setters (omitted for brevity)
-
-    // Relationship with Booking (one-to-many)
-    @OneToMany(mappedBy = "restaurant")
-    private List<Booking> bookings;
 
     public Long getId() {
         return id;
@@ -105,12 +101,5 @@ public class Restaurant {
         this.updatedAt = updatedAt;
     }
 
-    public List<Booking> getBookings() {
-        return bookings;
-    }
-
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
-    }
+    // Getters and Setters
 }
-

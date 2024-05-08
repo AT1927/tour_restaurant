@@ -1,4 +1,5 @@
 package com.tour.restaurant.infraestructure.Entities;
+
 import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -13,40 +14,34 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private Integer numberCustomer;
+    @Column(name = "food", nullable = false)
+    private Integer food;
 
-    @Column(nullable = false)
+    @Column(name = "number_of_people", nullable = false)
+    private Integer numberOfPeople;
+
+    @Column(name = "date", nullable = false)
     private Date date;
 
-    @Column(nullable = false)
-    private Integer numberOfPeople; // Número de personas en la reserva
+    @Column(name = "status", nullable = false, columnDefinition = "boolean default true")
+    private Boolean status;
 
-    @Column(nullable = false)
-    private Boolean status;  // Track booking status (true: confirmed, false: pending)
+    @Column(name = "status_payment", nullable = false, columnDefinition = "boolean default false")
+    private Boolean statusPayment;
 
-    @Column(nullable = false)
-    private Boolean paymentStatus;
+    @Column(name = "id_restaurant", nullable = false)
+    private Integer idRestaurant;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_restaurant", nullable = false)
-    private Restaurant restaurant;
-
-    @OneToOne(optional = false)   // Consider if a booking always needs a table
-    @JoinColumn(name = "id_table_food", nullable = false)
-    private TableFood tableFood;
+    @Column(name = "id_table_food", nullable = false)
+    private Integer idTableFood;
 
     @CreatedDate
-    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private Date createdAt;
 
     @LastModifiedDate
-    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "updated_at", nullable = false)
     private Date updatedAt;
-
-
-
-    // Getters and setters
 
     public Long getId() {
         return id;
@@ -56,20 +51,12 @@ public class Booking {
         this.id = id;
     }
 
-    public Integer getNumberCustomer() {
-        return numberCustomer;
+    public Integer getFood() {
+        return food;
     }
 
-    public void setNumberCustomer(Integer capacity) {
-        this.numberCustomer = capacity;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
+    public void setFood(Integer food) {
+        this.food = food;
     }
 
     public Integer getNumberOfPeople() {
@@ -80,6 +67,14 @@ public class Booking {
         this.numberOfPeople = numberOfPeople;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     public Boolean getStatus() {
         return status;
     }
@@ -88,31 +83,29 @@ public class Booking {
         this.status = status;
     }
 
-    public Boolean getPaymentStatus() {
-        return paymentStatus;
+    public Boolean getStatusPayment() {
+        return statusPayment;
     }
 
-    public void setPaymentStatus(Boolean paymentStatus) {
-        this.paymentStatus = paymentStatus;
+    public void setStatusPayment(Boolean statusPayment) {
+        this.statusPayment = statusPayment;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
+    public Integer getIdRestaurant() {
+        return idRestaurant;
     }
 
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
+    public void setIdRestaurant(Integer idRestaurant) {
+        this.idRestaurant = idRestaurant;
     }
 
-    public TableFood getTableFood() {
-        return tableFood;
+    public Integer getIdTableFood() {
+        return idTableFood;
     }
 
-    public void setTableFood(TableFood tableFood) {
-        this.tableFood = tableFood;
+    public void setIdTableFood(Integer idTableFood) {
+        this.idTableFood = idTableFood;
     }
-
-
 
     public Date getCreatedAt() {
         return createdAt;

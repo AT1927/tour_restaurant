@@ -2,6 +2,7 @@ package com.tour.restaurant.infraestructure.Mapper;
 
 import com.tour.restaurant.infraestructure.Entities.TableFood;
 import com.tour.restaurant.Domain.DTO.TableFoodDTO;
+import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -10,27 +11,30 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
-@Component
-@Mapper(componentModel = "spring", uses = {RestaurantMapper.class, BookingMapper.class})
+
+@Mapper(componentModel = "spring")
 public interface TableFoodMapper {
 
-    TableFoodMapper INSTANCE = Mappers.getMapper(TableFoodMapper.class);
 
     @Mappings({
-            @Mapping(target = "isAvailable", source = "available"),
-            @Mapping(target = "available", source = "isAvailable"),
-            @Mapping(target = "createdAt", ignore = true),
-            @Mapping(target = "updatedAt", ignore = true)
+            @Mapping(source = "id", target ="id"),
+            @Mapping(source = "capacity", target ="capacity"),
+            @Mapping(source = "number", target ="number"),
+            @Mapping(source = "isAvailable", target ="isAvailable"),
+            @Mapping( target ="created_at", ignore = true),
+            @Mapping( target ="updated_at", ignore = true),
     })
 
 
     TableFoodDTO toTableFoodDTO(TableFood tableFood);
-    List<TableFoodDTO> toTablesFoodDTO( List<TableFood> tablesFood);
-    TableFood toTableFood(TableFoodDTO tableFoodDTO);
-    List<TableFoodDTO> toTablesFood(List<TableFood> tables);
-
+    List<TableFoodDTO> toTablesFoodDTO(List<TableFood> tablesFood);
     default Optional<TableFoodDTO> toTablesFoodOptional(Optional<TableFood> tableFood ){
         return  tableFood.map(this::toTableFoodDTO);
     }
+    @InheritInverseConfiguration
+    TableFood toTableFood(TableFoodDTO tableFoodDTO);
+    List<TableFood> toTablesFood(List<TableFoodDTO> tablesDTO);
+
+
 }
 

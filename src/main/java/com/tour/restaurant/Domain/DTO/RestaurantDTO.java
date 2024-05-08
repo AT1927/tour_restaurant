@@ -1,7 +1,5 @@
 package com.tour.restaurant.Domain.DTO;
 
-import java.util.Date;
-
 public class RestaurantDTO {
 
     private Long id;
@@ -11,8 +9,7 @@ public class RestaurantDTO {
     private String schedule;
     private String type;
 
-
-    //Functions:
+    // Getters and Setters
 
     public Long getId() {
         return id;
@@ -61,6 +58,4 @@ public class RestaurantDTO {
     public void setType(String type) {
         this.type = type;
     }
-
-
 }

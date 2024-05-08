@@ -1,4 +1,5 @@
 package com.tour.restaurant.infraestructure.Entities;
+
 import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -13,21 +14,21 @@ public class TableFood {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "capacity", nullable = false)
     private Integer capacity;
 
-    @Column(nullable = false)
+    @Column(name = "number", nullable = false)
     private Integer number;
 
-    @Column(nullable = false)
-    private Boolean available;
+    @Column(name = "is_available", nullable = false, columnDefinition = "boolean default true")
+    private Boolean isAvailable;
 
     @CreatedDate
-    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private Date createdAt;
 
     @LastModifiedDate
-    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "updated_at", nullable = false)
     private Date updatedAt;
 
     public Long getId() {
@@ -55,13 +56,12 @@ public class TableFood {
     }
 
     public Boolean getAvailable() {
-        return available;
+        return isAvailable;
     }
 
-    public Boolean isAvailable() {
-        return available;
+    public void setAvailable(Boolean available) {
+        isAvailable = available;
     }
-
 
     public Date getCreatedAt() {
         return createdAt;
@@ -77,26 +77,5 @@ public class TableFood {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
-    }
-
-
-    @OneToOne(mappedBy = "tableFood")
-    private Booking booking;
-
-
-    public TableFood() {
-    }
-
-
-    public TableFood(Integer capacity, Integer number, Boolean available, Date createdAt, Date updatedAt) {
-        this.capacity = capacity;
-        this.number = number;
-        this.available = available;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
-
-    public void setAvailable(boolean available) {
-        this.available = available;
     }
 }

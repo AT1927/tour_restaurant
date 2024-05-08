@@ -19,7 +19,7 @@ public abstract class RestaurantRepository implements RestaurantRepositoryDomain
     @Override
     public List<RestaurantDTO> getAll(){
         List<Restaurant> restaurants = (List<Restaurant>) restaurantRepo.findAll();
-        return mapper.toRestaurants(restaurants);
+        return mapper.toRestaurantsDTO(restaurants);
     }
    @Override
     public Optional<RestaurantDTO> getById(long idRestaurant){

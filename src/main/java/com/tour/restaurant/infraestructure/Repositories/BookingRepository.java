@@ -14,10 +14,10 @@ import java.util.Optional;
 public  class BookingRepository implements BookingRepositoryDomain {
 
     @Autowired
-    private BookingCrudRepository bookingCrudRepository;
+    public BookingCrudRepository bookingCrudRepository;
 
     @Autowired
-    private BookingMapper bookingMapper;
+    public BookingMapper bookingMapper;
 
 
     @Override
