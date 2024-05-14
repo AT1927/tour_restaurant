@@ -5,13 +5,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
 public interface RestaurantRepositoryDomain {
     
     List<RestaurantDTO> getAll();
 
-    List<Restaurant> getByRestaurant(Restaurant restaurant);
-    /*Optional<Restaurant> getById(long id);*/
     Optional<RestaurantDTO> getById(long id);
     RestaurantDTO save(RestaurantDTO restaurantDTO);
     void deleteByID(long id);

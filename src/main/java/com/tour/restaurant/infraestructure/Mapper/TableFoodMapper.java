@@ -20,9 +20,8 @@ public interface TableFoodMapper {
             @Mapping(source = "id", target ="id"),
             @Mapping(source = "capacity", target ="capacity"),
             @Mapping(source = "number", target ="number"),
-            @Mapping(source = "isAvailable", target ="isAvailable"),
-            @Mapping( target ="created_at", ignore = true),
-            @Mapping( target ="updated_at", ignore = true),
+            @Mapping(source = "available", target ="available")
+
     })
 
 

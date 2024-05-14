@@ -20,8 +20,8 @@ public class TableFood {
     @Column(name = "number", nullable = false)
     private Integer number;
 
-    @Column(name = "is_available", nullable = false, columnDefinition = "boolean default true")
-    private Boolean isAvailable;
+    @Column(name = "is_available")
+    private Boolean available;
 
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
@@ -56,11 +56,11 @@ public class TableFood {
     }
 
     public Boolean getAvailable() {
-        return isAvailable;
+        return available;
     }
 
     public void setAvailable(Boolean available) {
-        isAvailable = available;
+        this.available = available;
     }
 
     public Date getCreatedAt() {

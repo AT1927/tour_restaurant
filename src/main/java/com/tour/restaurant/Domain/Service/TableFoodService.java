@@ -1,7 +1,6 @@
 package com.tour.restaurant.Domain.Service;
 
 import com.tour.restaurant.Domain.DTO.TableFoodDTO;
-import com.tour.restaurant.infraestructure.Entities.TableFood;
 import com.tour.restaurant.Domain.Repository.TableFoodRepositoryDomain;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,41 +13,36 @@ import java.util.Optional;
 public class TableFoodService {
 
     @Autowired
-    private TableFoodRepositoryDomain repo ;
-
-    @Autowired
-    public TableFoodService(TableFoodRepositoryDomain repo) {
-        this.repo = repo;
-    }
+    private TableFoodRepositoryDomain repoTable;
 
     public Optional<TableFoodDTO> findByNumberTable(Integer numberTable){
-        return repo.findByNumberTable(numberTable);
+        return repoTable.findByNumberTable(numberTable);
     }
 
     public List<TableFoodDTO> findByIsAvailableTrue(){
-        return repo.findByIsAvailableTrue();
+        return repoTable.findByIsAvailableTrue();
     }
 
     public List<TableFoodDTO> findByIsAvailableFalse(){
-        return repo.findByIsAvailableFalse();
+        return repoTable.findByIsAvailableFalse();
     }
 
     public List<TableFoodDTO> getAllTables(){
-        List<TableFoodDTO> tables = repo.findAll();
+        List<TableFoodDTO> tables = repoTable.findAll();
         return new ArrayList<>(tables);
     }
 
     public Optional<TableFoodDTO> getTablebyId(Long id){
-        return repo.findById(id);
+        return repoTable.findById(id);
     }
 
     public TableFoodDTO save(TableFoodDTO table){
-        return repo.save(table);
+        return repoTable.save(table);
     }
 
     public boolean deleteById(Long id){
         if (getTablebyId(id).isPresent()) {
-            repo.deleteById(id);
+            repoTable.deleteById(id);
             return true;
         }
         return false;

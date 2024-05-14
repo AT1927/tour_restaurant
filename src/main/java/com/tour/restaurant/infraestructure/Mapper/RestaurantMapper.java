@@ -22,18 +22,15 @@ public interface RestaurantMapper {
             @Mapping(source = "address", target ="address"),
             @Mapping(source = "schedule", target ="schedule"),
             @Mapping(source = "type", target ="type"),
-            @Mapping(target =  "created_at", ignore = true),
-            @Mapping(target = "updated_at", ignore = true),
     })
 
-
-    Restaurant toRestaurant(RestaurantDTO restaurantDTO);
-
-    @InheritInverseConfiguration
     RestaurantDTO toRestaurantDTO(Restaurant restaurant);
     List<RestaurantDTO> toRestaurantsDTO(List<Restaurant> restaurants);
-
     default Optional<RestaurantDTO> toRestaurantsOptional(Optional<Restaurant> restaurant ){
         return  restaurant.map(this::toRestaurantDTO);
     }
+    @InheritInverseConfiguration
+    Restaurant toRestaurant(RestaurantDTO restaurantDTO);
+
+
 }

@@ -5,9 +5,7 @@ public class TableFoodDTO {
     private Long id;
     private Integer capacity;
     private Integer number;
-    private Boolean isAvailable;
-
-    // Getters and Setters
+    private Boolean available;
 
     public Long getId() {
         return id;
@@ -33,11 +31,11 @@ public class TableFoodDTO {
         this.number = number;
     }
 
-    public Boolean getIsAvailable() {
-        return isAvailable;
+    public Boolean getAvailable() {
+        return available;
     }
 
-    public void setIsAvailable(Boolean isAvailable) {
-        this.isAvailable = isAvailable;
+    public void setAvailable(Boolean available) {
+        this.available = available;
     }
 }

@@ -14,12 +14,9 @@ import java.util.stream.Collectors;
 @Service
 public class RestaurantService {
 
+    @Autowired
     private RestaurantRepositoryDomain restaurantRepository;
 
-    @Autowired
-    public RestaurantService(RestaurantRepositoryDomain restaurantRepository) {
-        this.restaurantRepository = restaurantRepository;
-    }
 
     public List<RestaurantDTO> getAllRestaurants() {
         List<RestaurantDTO> restaurants = restaurantRepository.getAll();

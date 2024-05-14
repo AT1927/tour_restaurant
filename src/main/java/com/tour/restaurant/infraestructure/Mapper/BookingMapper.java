@@ -3,14 +3,17 @@ package com.tour.restaurant.infraestructure.Mapper;
 import com.tour.restaurant.Domain.DTO.BookingDTO;
 import com.tour.restaurant.infraestructure.Entities.Booking;
 import com.tour.restaurant.infraestructure.Entities.TableFood;
-import org.mapstruct.*;
+import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mappings;
+import org.mapstruct.Mapping;
 
 
 import java.util.List;
 import java.util.Optional;
 
 
-@Mapper(componentModel = "spring" )
+@Mapper(componentModel = "spring")
 public interface BookingMapper {
     @Mappings({
             @Mapping(source = "id", target ="id"),
@@ -19,10 +22,9 @@ public interface BookingMapper {
             @Mapping(source = "food", target ="food"),
             @Mapping(source = "status", target ="status"),
             @Mapping(source = "statusPayment", target ="statusPayment"),
-            @Mapping(source = "restaurant.id", target ="idRestaurant"),
-            @Mapping(source = "tableFood.id", target ="idTableFood"),
-            @Mapping(target = "created_at", ignore = true),
-            @Mapping(target = "updated_at", ignore = true),
+            @Mapping(source = "idRestaurant", target ="idRestaurant"),
+            @Mapping(source = "idTableFood", target ="idTableFood"),
+
     })
     BookingDTO toBookingDTO(Booking booking);
 
