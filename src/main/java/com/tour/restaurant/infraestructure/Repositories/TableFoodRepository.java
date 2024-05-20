@@ -9,6 +9,7 @@ import com.tour.restaurant.infraestructure.Repositories.Crud.TableFoodCrudReposi
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,8 +47,11 @@ public class TableFoodRepository implements TableFoodRepositoryDomain{
     @Override
     public TableFoodDTO save(TableFoodDTO table) {
         TableFood tableFood = tableMapper.toTableFood(table);
-        return tableMapper.toTableFoodDTO(tableRepo.save(tableFood));
 
+        if (tableFood.getCreatedAt() == null) {
+            tableFood.setCreatedAt(LocalDateTime.now());
+        }
+        return tableMapper.toTableFoodDTO(tableRepo.save(tableFood));
     }
 
 

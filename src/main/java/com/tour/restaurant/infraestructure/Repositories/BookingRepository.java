@@ -37,6 +37,9 @@ public  class BookingRepository implements BookingRepositoryDomain {
     @Override
     public BookingDTO save(BookingDTO BookingDto) {
         Booking booking = bookingMapper.toBooking(BookingDto);
+        if (booking.getCreatedAt() == null) {
+            booking.setCreatedAt(java.time.LocalDateTime.now());
+        }
         return bookingMapper.toBookingDTO(bookingCrudRepository.save(booking));
     }
 

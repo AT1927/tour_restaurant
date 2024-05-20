@@ -30,6 +30,9 @@ public class RestaurantRepository implements RestaurantRepositoryDomain {
     @Override
     public RestaurantDTO save(RestaurantDTO restaurantDTO){
         Restaurant restaurant = mapper.toRestaurant(restaurantDTO);
+        if (restaurant.getCreatedAt() == null){
+            restaurant.setCreatedAt(java.time.LocalDateTime.now());
+        }
         return mapper.toRestaurantDTO(restaurantRepo.save(restaurant));
     }
     @Override
