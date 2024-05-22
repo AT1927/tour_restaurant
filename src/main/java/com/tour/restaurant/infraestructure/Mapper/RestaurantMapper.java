@@ -22,6 +22,7 @@ public interface RestaurantMapper {
             @Mapping(source = "address", target ="address"),
             @Mapping(source = "schedule", target ="schedule"),
             @Mapping(source = "type", target ="type"),
+
     })
 
     RestaurantDTO toRestaurantDTO(Restaurant restaurant);

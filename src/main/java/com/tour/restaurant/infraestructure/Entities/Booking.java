@@ -30,8 +30,7 @@ public class Booking {
     @Column(name = "status_payment", nullable = false, columnDefinition = "boolean default false")
     private Boolean statusPayment;
 
-    @Column(name = "id_restaurant", nullable = false)
-    private Integer idRestaurant;
+
 
     @Column(name = "id_table_food", nullable = false)
     private Integer idTableFood;
@@ -43,6 +42,8 @@ public class Booking {
     @LastModifiedDate
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
+
+
 
     @PrePersist
     protected void onCreate() {
@@ -103,14 +104,6 @@ public class Booking {
 
     public void setStatusPayment(Boolean statusPayment) {
         this.statusPayment = statusPayment;
-    }
-
-    public Integer getIdRestaurant() {
-        return idRestaurant;
-    }
-
-    public void setIdRestaurant(Integer idRestaurant) {
-        this.idRestaurant = idRestaurant;
     }
 
     public Integer getIdTableFood() {

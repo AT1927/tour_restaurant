@@ -7,6 +7,8 @@ public class TableFoodDTO {
     private Integer number;
     private Boolean available;
 
+    private Integer idRestaurant;
+
     public Long getId() {
         return id;
     }
@@ -29,6 +31,14 @@ public class TableFoodDTO {
 
     public void setNumber(Integer number) {
         this.number = number;
+    }
+
+    public Integer getIdRestaurant() {
+        return idRestaurant;
+    }
+
+    public void setIdRestaurant(Integer idRestaurant) {
+        this.idRestaurant = idRestaurant;
     }
 
     public Boolean getAvailable() {

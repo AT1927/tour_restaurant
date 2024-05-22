@@ -1,4 +1,4 @@
-CREATE DATABASE restaurant_db;
+CREATE DATABASE restaurant_db_final;
 
 USE restaurant_db;
 
@@ -19,7 +19,8 @@ CREATE TABLE table_food (
                             number INT NOT NULL,
                             is_available BOOLEAN NOT NULL DEFAULT TRUE,
                             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                            CONSTRAINT `table_to_restaurant` FOREIGN KEY (id_restaurant) REFERENCES Restaurant(id) ON DELETE  RESTRICT ON UPDATE CASCADE
 );
 
 CREATE TABLE booking (
@@ -33,7 +34,6 @@ CREATE TABLE booking (
                          id_table_food INT NOT NULL,
                          created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                          updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                         CONSTRAINT `booking_to_restaurant` FOREIGN KEY (id_restaurant) REFERENCES Restaurant(id) ON DELETE  RESTRICT ON UPDATE CASCADE,
                          CONSTRAINT `booking_to_table` FOREIGN KEY (id_table_food) REFERENCES table_food(id) ON DELETE  RESTRICT ON UPDATE CASCADE
     -- FOREIGN KEY (id_customer) REFERENCES Customer(id)
 );

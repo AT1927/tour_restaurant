@@ -24,6 +24,9 @@ public class TableFood {
     @Column(name = "is_available")
     private Boolean available;
 
+    @Column(name = "id_restaurant", nullable = false)
+    private Integer idRestaurant;
+
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
@@ -74,6 +77,15 @@ public class TableFood {
 
     public void setAvailable(Boolean available) {
         this.available = available;
+    }
+
+    public Integer getIdRestaurant() {
+        return idRestaurant;
+    }
+
+
+    public void setIdRestaurant(Integer idRestaurant) {
+        this.idRestaurant = idRestaurant;
     }
 
     public LocalDateTime getCreatedAt() {

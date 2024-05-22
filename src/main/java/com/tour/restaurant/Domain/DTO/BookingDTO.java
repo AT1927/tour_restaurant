@@ -9,7 +9,7 @@ public class BookingDTO {
     private Integer food;
     private Boolean status;
     private Boolean statusPayment;
-    private Integer idRestaurant;
+
     private Integer idTableFood;
 
     // Getters and Setters
@@ -61,13 +61,7 @@ public class BookingDTO {
         this.statusPayment = statusPayment;
     }
 
-    public Integer getIdRestaurant() {
-        return idRestaurant;
-    }
 
-    public void setIdRestaurant(Integer idRestaurant) {
-        this.idRestaurant = idRestaurant;
-    }
 
     public Integer getIdTableFood() {
         return idTableFood;

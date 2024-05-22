@@ -22,7 +22,6 @@ public interface BookingMapper {
             @Mapping(source = "food", target ="food"),
             @Mapping(source = "status", target ="status"),
             @Mapping(source = "statusPayment", target ="statusPayment"),
-            @Mapping(source = "idRestaurant", target ="idRestaurant"),
             @Mapping(source = "idTableFood", target ="idTableFood"),
 
     })
