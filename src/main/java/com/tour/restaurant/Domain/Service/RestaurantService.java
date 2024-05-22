@@ -42,22 +42,21 @@ public class RestaurantService {
         return false;
     }
 
-
-    /*
-    //-----------------------------------------------------------
-    public RestaurantDTO createRestaurant(RestaurantDTO restaurantDto) {
-
-        Restaurant restaurantEntity = convertToEntity(restaurantDto);
+    public List<RestaurantDTO> getRestaurantsByname(String name){
+        List<RestaurantDTO> restaurants = restaurantRepository.getAll();
+        return restaurants.stream().filter(restaurantDTO -> restaurantDTO.getName().equals(name)).collect(Collectors.toList());
+      }
 
 
-        Restaurant savedRestaurant = restaurantRepository.save(restaurantEntity);
+    public List<RestaurantDTO> getRestaurantsByAddress(String address){
+        List<RestaurantDTO> restaurants = restaurantRepository.getAll();
+        return restaurants.stream().filter(restaurantDTO -> restaurantDTO.getAddress().equals(address)).collect(Collectors.toList());
+     }
 
-
-        return convertToDto(savedRestaurant);
-    }
-
-     */
-
+    public List<RestaurantDTO> getRestaurantsByType(String type){
+       List<RestaurantDTO> restaurants = restaurantRepository.getAll();
+         return restaurants.stream().filter(restaurantDTO -> restaurantDTO.getType().equals(type)).collect(Collectors.toList());
+        }
 
 
 

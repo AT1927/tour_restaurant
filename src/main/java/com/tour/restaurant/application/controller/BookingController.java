@@ -25,6 +25,7 @@ public class BookingController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+
     @PostMapping()
     public ResponseEntity<BookingDTO> save (@RequestBody BookingDTO booking){
         return new ResponseEntity<>(bookingService.save(booking),  HttpStatus.CREATED) ;

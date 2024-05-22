@@ -30,6 +30,20 @@ public class RestaurantController {
         return new ResponseEntity<>(restaurantService.save(restaurant),  HttpStatus.CREATED) ;
     }
 
+    @GetMapping("/name/{name}")
+    public ResponseEntity<List<RestaurantDTO>> getByName(@PathVariable("name") String name){
+        return new ResponseEntity<>(restaurantService.getRestaurantsByname(name), HttpStatus.OK);
+    }
+
+    @GetMapping("/address/{address}")
+    public ResponseEntity<List<RestaurantDTO>> getByAddress(@PathVariable("address") String address){
+        return new ResponseEntity<>(restaurantService.getRestaurantsByAddress(address), HttpStatus.OK);
+    }
+
+    @GetMapping("/type/{type}")
+    public ResponseEntity<List<RestaurantDTO>> getByType(@PathVariable("type") String type){
+        return new ResponseEntity<>(restaurantService.getRestaurantsByType(type), HttpStatus.OK);
+    }
 
     @DeleteMapping("{id}")
     public ResponseEntity delete (@PathVariable("id") Long restaurantID){
