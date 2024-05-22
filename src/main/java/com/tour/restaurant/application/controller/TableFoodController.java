@@ -30,6 +30,15 @@ public class TableFoodController {
         return new ResponseEntity<>(tableFoodService.save(table),  HttpStatus.CREATED) ;
     }
 
+
+
+
+    @GetMapping("/available")
+    public ResponseEntity<List<TableFoodDTO>> getAvailableTables(){
+        return new ResponseEntity<>(tableFoodService.getAvailableTables(), HttpStatus.OK);
+    }
+
+
     @DeleteMapping("{id}")
     public ResponseEntity delete (@PathVariable("id") Long tableID){
         if (tableFoodService.deleteById(tableID)){

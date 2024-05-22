@@ -49,10 +49,7 @@ public class TableFoodService {
     }
 
 
-
-
-
-
-
-
+    public List<TableFoodDTO> getAvailableTables() {
+        return repoTable.findByIsAvailableTrue();
+    }
 }
