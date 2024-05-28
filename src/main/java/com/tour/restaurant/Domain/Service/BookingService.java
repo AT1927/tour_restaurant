@@ -39,6 +39,12 @@ public class BookingService {
     };
 
 
+    public List<BookingDTO> getActiveBookings() {
+    return bookingRepository.getActiveBookings();
+}
+
+
+
 
 
 }

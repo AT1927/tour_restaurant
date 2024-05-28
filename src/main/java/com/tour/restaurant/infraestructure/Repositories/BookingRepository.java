@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Repository
 public  class BookingRepository implements BookingRepositoryDomain {
@@ -26,6 +27,16 @@ public  class BookingRepository implements BookingRepositoryDomain {
         return bookingMapper.toBookings(bookings);
 
     }
+
+
+
+    @Override
+    public List<BookingDTO> getActiveBookings() {
+    List<Booking> bookings = (List<Booking>) bookingCrudRepository.findAll();
+    return bookingMapper.toBookings(bookings.stream()
+        .filter(Booking::getStatus)
+        .collect(Collectors.toList()));
+}
 
     @Override
     public Optional<BookingDTO> getById(long id) {
@@ -48,5 +59,7 @@ public  class BookingRepository implements BookingRepositoryDomain {
         bookingCrudRepository.deleteById(id);
 
     }
+
+
 
 }

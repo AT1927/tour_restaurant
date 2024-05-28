@@ -13,6 +13,8 @@ public interface BookingRepositoryDomain {
     List<BookingDTO> getAll();
 
 
+    List<BookingDTO> getActiveBookings();
+
     Optional<BookingDTO> getById(long id);
     BookingDTO save(BookingDTO Booking);
     void deleteByID(long id);

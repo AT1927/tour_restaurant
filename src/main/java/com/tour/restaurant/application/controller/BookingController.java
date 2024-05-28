@@ -40,5 +40,9 @@ public class BookingController {
         return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 
+    @GetMapping("/active")
+    public ResponseEntity<List<BookingDTO>> getActiveBookings(){
+        return new ResponseEntity<>(bookingService.getActiveBookings(), HttpStatus.OK);
+    }
 
 }
